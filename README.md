@@ -1,4 +1,6 @@
 # rpi-pico-watering-system
+![circuit diagram](doc/circuit.jpg "circuit diagram")
+![data flow](doc/data-flow.jpg "data flow")
 ## TODO
 - hardware
   - make a first version of the circuit only with the rpi pico and wifi board for mqtt testing
