@@ -2,11 +2,11 @@
 
 ## Circuit diagram
 
-![circuit diagram](doc/pico-w.jpg "circuit diagram")
+![circuit diagram](doc/pico-w.drawio.png "circuit diagram")
 
 ## Data flow
 
-![data flow](doc/data-flow.jpg "data flow")
+![data flow](doc/data-flow.drawio.png "data flow")
 
 ## TODO
 ### hardware
