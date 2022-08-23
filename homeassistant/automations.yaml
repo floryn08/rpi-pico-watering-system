@@ -1,66 +1,42 @@
 - id: '1657652516061'
-  alias: Relay 1
+  alias: Relay 1 on
   description: ''
   trigger:
   - platform: mqtt
     topic: moisture/sensor1
   condition:
-  - condition: numeric_state
+  - condition: state
     entity_id: sensor.sensor_1
-    below: '80'
+    state: 'on'
   action:
   - service: mqtt.publish
     data:
       topic: relays/relay1
       payload: 'on'
-      retain: true
   - service: mqtt.publish
     data:
       payload: 'on'
-      retain: true
       topic: pump
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - service: mqtt.publish
-    data:
-      topic: relays/relay1
-      retain: true
-      payload: 'off'
   mode: single
 - id: '1657653702931'
-  alias: Relay 2
+  alias: Relay 2 on
   description: ''
   trigger:
   - platform: mqtt
     topic: moisture/sensor2
   condition:
-  - condition: numeric_state
+  - condition: state
     entity_id: sensor.sensor_2
-    below: '80'
+    state: 'on'
   action:
   - service: mqtt.publish
     data:
       topic: relays/relay2
       payload: 'on'
-      retain: true
   - service: mqtt.publish
     data:
       topic: pump
       payload: 'on'
-      retain: true
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - service: mqtt.publish
-    data:
-      topic: relays/relay2
-      payload: 'off'
-      retain: true
   mode: single
 - id: '1658156821771'
   alias: Pump off when all relays are off
@@ -93,34 +69,70 @@
       payload: 'off'
   mode: single
 - id: '1658159041928'
-  alias: Relay 3
+  alias: Relay 3 on
   description: ''
   trigger:
   - platform: mqtt
     topic: moisture/sensor3
   condition:
-  - condition: numeric_state
+  - condition: state
     entity_id: sensor.sensor_3
-    below: '80'
+    state: 'on'
   action:
   - service: mqtt.publish
     data:
       topic: relays/relay3
       payload: 'on'
-      retain: true
   - service: mqtt.publish
     data:
       topic: pump
       payload: 'on'
-      retain: true
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
+  mode: single
+- id: '1661270224448'
+  alias: Relay 1 off
+  description: ''
+  trigger:
+  - platform: mqtt
+    topic: moisture/sensor1
+  condition:
+  - condition: state
+    entity_id: sensor.sensor_1
+    state: 'off'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: relays/relay1
+      payload: 'off'
+  mode: single
+- id: '1661271286596'
+  alias: Relay 2 off
+  description: ''
+  trigger:
+  - platform: mqtt
+    topic: moisture/sensor2
+  condition:
+  - condition: state
+    state: 'off'
+    entity_id: sensor.sensor_2
+  action:
+  - service: mqtt.publish
+    data:
+      topic: relays/relay2
+      payload: 'off'
+  mode: single
+- id: '1661271348729'
+  alias: Relay 3 off
+  description: ''
+  trigger:
+  - platform: mqtt
+    topic: moisture/sensor3
+  condition:
+  - condition: state
+    entity_id: sensor.sensor_3
+    state: 'off'
+  action:
   - service: mqtt.publish
     data:
       topic: relays/relay3
       payload: 'off'
-      retain: true
   mode: single
