@@ -18,3 +18,8 @@
 - [x] create data model for mqtt topics
 - [x] figure out how homeassistant can read data from mqtt and set thresholds for soil moisture and trigger a publish to relay topic that opens the relay for the specific sensor
 - [x] create micro python script for rpi pico that connects to local wifi and sends to mqtt topics the sensors data
+
+## Setup
+1. rename `secrets.py.sample` to `secrets.py`
+2. install umqtt.simple from Thonny package manager
+3. run the `main.py` script
