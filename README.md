@@ -17,4 +17,4 @@
 - [x] figure out data flow between rpi pico and homeassistant with mqtt broker
 - [x] create data model for mqtt topics
 - [x] figure out how homeassistant can read data from mqtt and set thresholds for soil moisture and trigger a publish to relay topic that opens the relay for the specific sensor
-- [X] create micro python script for rpi pico that connects to local wifi and sends to mqtt topics the sensors data
+- [x] create micro python script for rpi pico that connects to local wifi and sends to mqtt topics the sensors data
