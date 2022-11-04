@@ -10,7 +10,7 @@ except ImportError:
     raise
 
 mqtt_server = secrets['broker']
-client_id = '1234123'
+client_id = 'rpi_pico_watering_system'
 
 led = Pin("LED", Pin.OUT)
 # temp = DHT11(Pin(17, Pin.OUT, Pin.PULL_DOWN))
@@ -19,10 +19,10 @@ sensor1 = Pin(11, Pin.IN)
 sensor2 = Pin(12, Pin.IN)
 sensor3 = Pin(13, Pin.IN)
 
-relay1 = Pin(21, Pin.OUT, value=1)
-relay2 = Pin(20, Pin.OUT, value=1)
-relay3 = Pin(19, Pin.OUT, value=1)
-relay4 = Pin(18, Pin.OUT, value=1)
+mosfet1 = Pin(21, Pin.OUT)
+mosfet2 = Pin(20, Pin.OUT)
+mosfet3 = Pin(19, Pin.OUT)
+mosfet4 = Pin(18, Pin.OUT)
 
 last_sensor_reading = 0
 readings_interval = 5
@@ -68,24 +68,24 @@ def sub_cb(topic, message):
 
     if topic == "relays/relay1":
         if message == "on":
-            relay1.value(0)
+            mosfet1.high()
         else:
-            relay1.value(1)
+            mosfet1.low()
     if topic == "relays/relay2":
         if message == "on":
-            relay2.value(0)
+            mosfet2.high()
         else:
-            relay2.value(1)
+            mosfet2.low()
     if topic == "relays/relay3":
         if message == "on":
-            relay3.value(0)
+            mosfet3.high()
         else:
-            relay3.value(1)
+            mosfet3.low()
     if topic == "pump":
         if message == "on":
-            relay4.value(0)
+            mosfet4.high()
         else:
-            relay4.value(1)
+            mosfet4.low()
 
 
 try:
